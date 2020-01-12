@@ -1,0 +1,42 @@
+<div style="padding-left: 30px">
+<div>
+    <h4><label for="search-box">Country Code Search</label></h4>
+
+    <input #searchBox id="search-box"  (keyup)="onKey($event)" />
+    <button (click)="onSubmitSearch(searchBox.value)" [disabled] = "countryCode.length !=3">Search</button>
+    
+ </div> 
+ <br>
+ <br>
+ <br>
+
+<div *ngIf="countryResp">
+  <div style="width: 100%; text-align: center; font-weight: bold"><label >Country Details </label></div>
+  <br><br>
+  <table>
+    <thead>
+      <tr>
+        <td> Country Code</td>
+        <td> Country Name</td>
+        <td> Capital city</td>
+        <td> Latitude</td>
+        <td> Longitude</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{countryResp.id}}</td>
+        <td>{{countryResp.name}}</td>
+        <td>{{countryResp.capitalCity}}</td>
+        <td>{{countryResp.latitude}}</td>
+        <td>{{countryResp.longitude}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div *ngIf="invalidCountryCode" style="width: 100%; color: red; font-weight: bold ">
+  {{errMsg}} : {{countryCode}}
+</div>
+
+</div>
